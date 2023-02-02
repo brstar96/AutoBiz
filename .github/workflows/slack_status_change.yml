@@ -1,4 +1,4 @@
-name: Self Check
+name: Slack Status Change
 
 on:
   schedule:
