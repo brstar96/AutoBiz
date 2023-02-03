@@ -39,7 +39,7 @@ jobs:
 
     - name: Execute python file
       run: |
-        python ./self_check.py
+        python ./change_status.py
 
     - name: Commit files
       run: |
