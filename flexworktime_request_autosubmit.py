@@ -3,6 +3,8 @@
 
 import os, random, time, pyperclip, pyautogui
 import chromedriver_autoinstaller
+
+from datetime import datetime, timedelta
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -11,6 +13,27 @@ from selenium.webdriver.common.by import By
 
 
 os.makedirs('./screenshots', exist_ok=True)
+debug = False
+now = datetime.now()
+days = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
+today = datetime.today().weekday()
+formattedDateToday = now.strftime("%Y%m%d_%H%M%S")
+
+if today == '금요일':
+  monday = now + timedelta(days=3)
+  friday = monday + timedelta(days=4)
+  workingday = '{} ~ {}'.format(monday.strftime('%Y년 %m월 %d일'), friday.strftime('%Y년 %m월 %d일'))
+else:
+  if debug == True:
+    print('debug mode')
+    now = now + timedelta(days=2)
+    monday = now + timedelta(days=3)
+    friday = monday + timedelta(days=4)
+    workingday = '{} ~ {}'.format(monday.strftime('%Y년 %m월 %d일'), friday.strftime('%Y년 %m월 %d일'))
+    print(workingday)
+  else:
+    print('Not Friday')
+    raise Exception('Not Friday')
 
 try:
   from selenium import webdriver
@@ -60,15 +83,26 @@ try:
     time.sleep(random.uniform(2,4))
 
     # 결재 요청 내용 입력 
-    txt = '기간: 2023년 1월 30일 ~ 2023년 2월 3일 근무시간: 오전 7시 ~ 오후 4시'
+    txt = '\n\n기간: {} \n근무시간: 오전 7시 ~ 오후 4시'.format(workingday)
     request_txt = driver.find_element_by_css_selector('#wrap > div:nth-child(3) > div > div.sc-cUEOzv.fVNCMH > div.sc-eeMvmM.glqOYO > div > div:nth-child(3) > div > div > div > div.fr-wrapper > div > p:nth-child(2)')
-    request_txt.click()
+    
+    # request_txt.click()
     time.sleep(1)
-    request_txt.send_keys(Keys.ENTER)
-    time.sleep(1)
-    actions_request_txt = webdriver.ActionChains(driver).send_keys_to_element(request_txt, txt).perform()
+    # time.sleep(3)
+    webdriver.ActionChains(driver).click().send_keys(Keys.ENTER).send_keys_to_element(request_txt, txt).perform()
+    print('add txt done!')
+    
+    # 결재 상신 
+    if debug == False:
+      confirm_btn = driver.find_elements_by_xpath('//*[@id="wrap"]/div[3]/div/div[2]/div[2]/div/div[6]/div[2]/div[2]/button[2]')[0]
+    else:
+      confirm_btn = driver.find_elements_by_xpath('//*[@id="wrap"]/div[3]/div/div[2]/div[2]/div/div[6]/div[2]/div[2]/button[1]')[0]
 
-    # driver.save_screenshot(f"{project_dir}/images/{datenow}-{i['no']}.png")
+    confirm_btn.click() 
+
+    time.sleep(3)
+
+    driver.save_screenshot(f"./screenshots/{formattedDateToday}.png")
 
 except Exception as e:
   print(e)

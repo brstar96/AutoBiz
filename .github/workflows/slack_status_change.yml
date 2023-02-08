@@ -2,7 +2,7 @@ name: Slack Status Change
 
 on:
   schedule:
-  - cron: '0 15 * * *' # kst 00:00
+  - cron: '0 15 * * 5' # set weekly cron job schedule only running on friday at 15:00 kst
 
 jobs:
   build:
@@ -39,7 +39,7 @@ jobs:
 
     - name: Execute python file
       run: |
-        python ./change_status.py
+        python ./flexworktime_request_autosubmit.py
 
     - name: Commit files
       run: |
