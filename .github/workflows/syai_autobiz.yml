@@ -3,6 +3,8 @@ name: syai_autobiz
 on:
   schedule:
   - cron: '0 10 * * 5' # set weekly cron job schedule only running on friday at 15:00 kst
+  push:
+    branches: [ "main" ]
 
 jobs:
   build:
