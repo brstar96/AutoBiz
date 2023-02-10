@@ -26,6 +26,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install selenium
         pip install chromedriver_autoinstaller
+        pip install webdriver_manager
+        pip install pytz==2022.7.1
 
     - name: Install ubuntu package
       run: |        
