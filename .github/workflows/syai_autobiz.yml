@@ -13,14 +13,13 @@ jobs:
       matrix:
         python-version: [3.7]
 
-    name: Test GMT +8 on Ubuntu
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Set Timezone to +8 (With input)
+    - name: Change Timezone
         uses: ./
         with:
           timezoneLinux: "Asia/Seoul"
+
+    steps:
+    - uses: actions/checkout@v2
 
     - name: Set up python ${{ matrix.python-version }}
       uses: actions/setup-python@v1
