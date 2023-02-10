@@ -37,24 +37,23 @@ else:
 
 try:
   from selenium import webdriver
-  options = webdriver.ChromeOptions()
+  chrome_options = webdriver.ChromeOptions()
   # options.add_argument('headless')
-  options.add_argument("lang=ko_KR")
-  options.add_argument('window-size=1500,1200')
-  options.add_argument("disable-gpu")
-  options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36")
+  chrome_options.add_argument("lang=ko_KR")
+  chrome_options.add_argument('window-size=1500,1200')
+  chrome_options.add_argument("disable-gpu")
+  chrome_options.add_argument('--no-sandbox')
+  chrome_options.add_argument('--disable-dev-shm-usage')
+  chrome_options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36")
 
   try:
     from webdriver_manager.chrome import ChromeDriverManager
-    driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
+    driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
   except Exception as e:
-    print(e)
+    print('Error!! - ', e)
     import chromedriver_autoinstaller
     path = chromedriver_autoinstaller.install()
-    driver = webdriver.Chrome(path, options=options)
-  except Exception as e:
-    print(e)
-    driver = webdriver.Chrome(r"./chromedriver_mac64", options=options)  
+    driver = webdriver.Chrome(path, chrome_options=chrome_options)
   finally:
     str1 = driver.capabilities['browserVersion']
     str2 = driver.capabilities['chrome']['chromedriverVersion'].split(' ')[0]
