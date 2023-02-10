@@ -24,7 +24,7 @@ jobs:
     - name: Install python package
       run: |
         python -m pip install --upgrade pip
-        pip install selenium
+        pip install selenium==3.141.0
         pip install chromedriver_autoinstaller
         pip install webdriver_manager
         pip install pytz==2022.7.1
