@@ -14,8 +14,8 @@ now = datetime.now()
 days = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
 today = datetime.today().weekday()
 formattedDateToday = now.strftime("%Y%m%d_%H%M%S")
-ID_MGL = os.environ['ID_MGL']
-PW_MGL = os.environ['PW_MGL']
+ID_MGL = os.environ.get('ID_MGL')
+PW_MGL = os.environ.get('PW_MGL')
 
 if today == '금요일':
   monday = now + timedelta(days=3)
