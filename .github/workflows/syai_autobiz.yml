@@ -39,12 +39,10 @@ jobs:
         timeZone: 9
         format: 'YY-MM-DD'
 
-    - name: Get Environment Parameters from Git Secrets
+    - name: Execute python file
       env: |
         ID_MGL: ${{ secrets.ID_MGL }}
         PW_MGL: ${{ secrets.PW_MGL }}
-
-    - name: Execute python file
       run: |
         python ./flexworktime_request_autosubmit.py
 
