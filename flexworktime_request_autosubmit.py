@@ -1,16 +1,12 @@
 # change slack status icon. 
 # if failed to change status, send personal DM via slack
 
-import os, random, time, pyperclip, pyautogui
-import chromedriver_autoinstaller
-
+import os, random, time
 from datetime import datetime, timedelta
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
 # for ubuntu CLI: https://somjang.tistory.com/entry/Ubuntu-Ubuntu-%EC%84%9C%EB%B2%84%EC%97%90-Selenium-%EC%84%A4%EC%B9%98%ED%95%98%EA%B3%A0-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
-
 
 os.makedirs('./screenshots', exist_ok=True)
 debug = False
@@ -47,9 +43,11 @@ try:
   options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36")
 
   try:
+    from webdriver_manager.chrome import ChromeDriverManager
     driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
   except Exception as e:
     print(e)
+    import chromedriver_autoinstaller
     path = chromedriver_autoinstaller.install()
     driver = webdriver.Chrome(path, options=options)
   except Exception as e:
