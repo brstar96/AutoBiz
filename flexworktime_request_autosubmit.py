@@ -38,11 +38,11 @@ else:
 try:
   from selenium import webdriver
   chrome_options = webdriver.ChromeOptions()
-  # options.add_argument('headless')
+  chrome_options.add_argument('headless')
+  chrome_options.add_argument('--no-sandbox')
   chrome_options.add_argument("lang=ko_KR")
   chrome_options.add_argument('window-size=1500,1200')
   chrome_options.add_argument("disable-gpu")
-  chrome_options.add_argument('--no-sandbox')
   chrome_options.add_argument('--disable-dev-shm-usage')
   chrome_options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36")
 
