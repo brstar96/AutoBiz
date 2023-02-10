@@ -40,11 +40,10 @@ jobs:
         format: 'YY-MM-DD'
 
     - name: Execute python file
-      env: |
+      env: 
         ID_MGL: ${{ secrets.ID_MGL }}
         PW_MGL: ${{ secrets.PW_MGL }}
-      run: |
-        python ./flexworktime_request_autosubmit.py
+      run: python ./flexworktime_request_autosubmit.py
 
     - name: Commit files
       run: |
