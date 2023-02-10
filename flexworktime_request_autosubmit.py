@@ -18,6 +18,8 @@ now = datetime.now()
 days = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
 today = datetime.today().weekday()
 formattedDateToday = now.strftime("%Y%m%d_%H%M%S")
+ID_MGL = os.environ['ID_MGL']
+PW_MGL = os.environ['PW_MGL']
 
 if today == '금요일':
   monday = now + timedelta(days=3)
@@ -62,13 +64,13 @@ try:
     driver.get('https://dashboard.wantedspace.ai/auth/email?redirect=/auth')
     id = driver.find_element_by_xpath('//*[@id="join"]/div[1]/div/div/div[1]/div[2]/div/input')
     time.sleep(1)
-    id.send_keys('brstar96@synergyai.co')
+    id.send_keys(ID_MGL)
     time.sleep(random.uniform(1,3))
     next_btn1 = driver.find_element_by_xpath('//*[@id="join"]/div[1]/div/div/div[2]/div[2]/button').click()
     time.sleep(random.uniform(2,4))
     pw = driver.find_elements_by_css_selector('#join > div.flex-wrap > div > div > div.card-body > div:nth-child(2) > div > input')[0]
     pw.click()
-    actions_pw = webdriver.ActionChains(driver).send_keys_to_element(pw, '???').send_keys(Keys.ENTER)
+    actions_pw = webdriver.ActionChains(driver).send_keys_to_element(pw, PW_MGL).send_keys(Keys.ENTER)
     actions_pw.perform()
     time.sleep(random.uniform(3,5))
     
