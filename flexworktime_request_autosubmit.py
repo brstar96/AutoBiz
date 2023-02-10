@@ -19,7 +19,7 @@ formattedDateToday = now.strftime("%Y%m%d_%H%M%S")
 ID_MGL = os.environ.get('ID_MGL')
 PW_MGL = os.environ.get('PW_MGL')
 
-if today == '금요일':
+if today == 4:
   monday = now + timedelta(days=3)
   friday = monday + timedelta(days=4)
   workingday = '{} ~ {}'.format(monday.strftime('%Y년 %m월 %d일'), friday.strftime('%Y년 %m월 %d일'))
