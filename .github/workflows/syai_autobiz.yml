@@ -49,6 +49,7 @@ jobs:
       run: |
         git config --global user.email "brstar96@naver.com"
         git config --global user.name "MYEONGGYULEE"
+        git pull
         git add .
         git commit -m "ADD SCREENSHOTS"
         git push origin master

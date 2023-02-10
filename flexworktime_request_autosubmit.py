@@ -103,7 +103,10 @@ try:
 
     time.sleep(3)
 
+    print('결재 상신 완료!')
     driver.save_screenshot(f"./screenshots/{formattedDateToday}.png")
+    driver.quit()
+    print('크론잡 실행 완료, 스크린샷 저장: ', f"./screenshots/{formattedDateToday}.png")
 
 except Exception as e:
   print(e)
