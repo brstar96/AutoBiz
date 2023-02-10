@@ -40,7 +40,7 @@ jobs:
         format: 'YY-MM-DD'
 
     - name: Get Environment Parameters from Git Secrets
-      run: |
+      env: |
         ID_MGL: ${{ secrets.ID_MGL }}
         PW_MGL: ${{ secrets.PW_MGL }}
 
