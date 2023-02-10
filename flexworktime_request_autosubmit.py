@@ -2,6 +2,7 @@
 # if failed to change status, send personal DM via slack
 
 import os, random, time
+from pytz import timezone
 from datetime import datetime, timedelta
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -10,7 +11,7 @@ from selenium.webdriver.common.by import By
 
 os.makedirs('./screenshots', exist_ok=True)
 debug = False
-now = datetime.now()
+now = datetime.now(timezone('Asia/Seoul'))
 days = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
 today = datetime.today().weekday()
 print('today is {}'.format(days[today]))

@@ -13,11 +13,6 @@ jobs:
       matrix:
         python-version: [3.7]
 
-    - name: Change Timezone
-        uses: ./
-        with:
-          timezoneLinux: "Asia/Seoul"
-
     steps:
     - uses: actions/checkout@v2
 
