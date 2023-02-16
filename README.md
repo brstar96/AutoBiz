@@ -1,4 +1,4 @@
-# SYAI_AutoBiz
+# AutoBiz
 귀찮은 반복 프로세스를 자동화해 시간을 아껴 주는 프로젝트
 
 ## Auto Slack Status Changer (WIP)
