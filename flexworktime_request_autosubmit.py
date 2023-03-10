@@ -13,8 +13,8 @@ days = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요
 today = datetime.today().weekday()
 print('today is {}, debug: {}'.format(days[today], debug))
 formattedDateToday = now.strftime("%Y%m%d_%H%M%S")
-ID_MGL = os.environ.get('ID_MGL')
-PW_MGL = os.environ.get('PW_MGL')
+# ID_MGL = os.environ.get('ID_MGL')
+# PW_MGL = os.environ.get('PW_MGL')
 
 if today == 4:
   monday = now + timedelta(days=3)
@@ -44,7 +44,7 @@ try:
   chrome_options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36")
 
   try:
-    driver = webdriver.Chrome('./chromedriver_mac64')
+    driver = webdriver.Chrome('./chromedriver_linux64')
     print('use project driver')
   except Exception as e:
     from webdriver_manager.chrome import ChromeDriverManager
@@ -66,13 +66,13 @@ try:
     driver.get('https://dashboard.wantedspace.ai/auth/email?redirect=/auth')
     id = driver.find_element_by_xpath('//*[@id="join"]/div[1]/div/div/div[1]/div[2]/div/input')
     time.sleep(1)
-    id.send_keys(ID_MGL) # ID_MGL
+    id.send_keys('brstar96@synergyai.co') # ID_MGL
     time.sleep(random.uniform(1,3))
     next_btn1 = driver.find_element_by_xpath('//*[@id="join"]/div[1]/div/div/div[2]/div[2]/button').click()
     time.sleep(random.uniform(2,4))
     pw = driver.find_elements_by_css_selector('#join > div.flex-wrap > div > div > div.card-body > div:nth-child(2) > div > input')[0]
     pw.click()
-    actions_pw = webdriver.ActionChains(driver).send_keys_to_element(pw, PW_MGL).send_keys(Keys.ENTER) # PW_MGL
+    actions_pw = webdriver.ActionChains(driver).send_keys_to_element(pw, 'dlaudrb1996*').send_keys(Keys.ENTER) # PW_MGL
     actions_pw.perform()
     driver.implicitly_wait(1)
     time.sleep(random.uniform(3,5))
