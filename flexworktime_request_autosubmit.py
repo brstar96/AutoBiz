@@ -56,7 +56,7 @@ try:
     path = chromedriver_autoinstaller.install()
     driver = webdriver.Chrome(path, chrome_options=chrome_options)
     print('use chromedriver_autoinstaller')
-  else:
+  finally:
     print('Driver Loaded!')
     str1 = driver.capabilities['browserVersion']
     str2 = driver.capabilities['chrome']['chromedriverVersion'].split(' ')[0]
