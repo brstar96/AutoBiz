@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 # for ubuntu CLI: https://somjang.tistory.com/entry/Ubuntu-Ubuntu-%EC%84%9C%EB%B2%84%EC%97%90-Selenium-%EC%84%A4%EC%B9%98%ED%95%98%EA%B3%A0-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
 
 os.makedirs('./screenshots', exist_ok=True)
-debug = True
+debug = False
 now = datetime.now(timezone('Asia/Seoul'))
 days = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']
 today = datetime.today().weekday()
